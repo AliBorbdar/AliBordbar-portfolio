@@ -1,4 +1,5 @@
 import "./css/additional-styles/style.css";
+
 import { Inter, Inter_Tight } from "next/font/google";
 import Theme from "./theme-provider";
 import Header from "@/components/ui/header";
@@ -25,6 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
       <body
         className={`${inter.variable} ${inter_tight.variable} font-inter antialiased bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 tracking-tight`}
       >
@@ -32,10 +34,12 @@ export default function RootLayout({
           <div className="overflow-hidden supports-[overflow:clip]:overflow-clip">
             <div className="max-w-[728px] mx-auto">
               <div className="w-full bg-white dark:bg-gray-900 border-x border-gray-100 dark:border-gray-800 box-content">
-                <div className="px-3 md:px-15">
+                <div className="px-3 md:px-16">
                   <div className="flex flex-col min-h-screen">
                     <Header />
+
                     <main className="grow py-12 space-y-12">{children}</main>
+
                     <Footer />
                   </div>
                 </div>
